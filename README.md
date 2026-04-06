@@ -187,6 +187,25 @@ mvn spring-boot:run
 ```
 
 ---
+## 🔑 Default Admin Credentials
+
+To ensure the system is usable immediately after startup, a default admin user is automatically created when the application runs for the first time.
+
+### 📧 Admin Login Details:
+
+* **Email:** [admin@gmail.com](mailto:admin@gmail.com)
+* **Password:** admin123
+
+### 📝 Note:
+
+* This admin user is initialized using a startup configuration class (`DataInitializer`).
+* If the admin already exists in the database, it will not be created again.
+* Use these credentials to access protected APIs and create/manage users and financial records.
+
+### ⚠️ Important:
+
+* All user management and record creation APIs require **Admin access**.
+* Please use the above credentials in API testing tools like Postman (Basic Auth).
 
 ### 4. Test APIs
 
@@ -203,15 +222,7 @@ Use tools like Postman for API testing.
 
 ---
 
-## 🌟 Optional Enhancements (Future Scope)
 
-* JWT-based authentication
-* Pagination & sorting
-* Search functionality
-* Swagger API documentation
-* Soft delete support
-
----
 
 ## 🎯 Key Highlights
 
