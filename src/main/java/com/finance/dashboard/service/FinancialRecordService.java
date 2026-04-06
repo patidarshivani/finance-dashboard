@@ -29,6 +29,27 @@ public class FinancialRecordService {
     }
 
 
+    public FinancialRecord updateRecord(Long id, FinancialRecord updated) {
+        FinancialRecord record = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Record not found"));
+
+        record.setAmount(updated.getAmount());
+        record.setType(updated.getType());
+        record.setCategory(updated.getCategory());
+        record.setDate(updated.getDate());
+        record.setDescription(updated.getDescription());
+
+        return repo.save(record);
+    }
+
+
+    public void deleteRecord(Long id) {
+        FinancialRecord record = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Record not found"));
+
+        repo.delete(record);
+    }
+
     public List<FinancialRecord> filterRecords(
             RecordType type,
             String category,

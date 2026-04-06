@@ -33,4 +33,26 @@ public class UserService {
         user.setStatus(Status.ACTIVE);
         return userRepository.save(user);
     }
+
+
+    public User updateUser(Long id, User updatedUser) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        user.setName(updatedUser.getName());
+        user.setEmail(updatedUser.getEmail());
+        user.setRole(updatedUser.getRole());
+
+        return userRepository.save(user);
+    }
+
+
+    public User updateStatus(Long id, Status status) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        user.setStatus(status);
+
+        return userRepository.save(user);
+    }
 }

@@ -27,6 +27,24 @@ public class FinancialRecordController {
         return ResponseEntity.ok(service.createRecord(record));
     }
 
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/{id}")
+    public ResponseEntity<FinancialRecord> update(
+            @PathVariable Long id,
+            @RequestBody FinancialRecord record
+    ) {
+        return ResponseEntity.ok(service.updateRecord(id, record));
+    }
+
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        service.deleteRecord(id);
+        return ResponseEntity.ok("Record deleted successfully");
+    }
+
 //    @PostMapping
 //    public ResponseEntity<FinancialRecord> create(
 //            @Valid @RequestBody FinancialRecord record
